@@ -21,6 +21,11 @@ public class User implements Serializable, UserDetails
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    public Long getId()
+    {
+        return id;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
