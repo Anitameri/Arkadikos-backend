@@ -1,9 +1,8 @@
 package com.arcade.arkadicos.orders;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.arcade.arkadicos.users.User;
+
+import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -16,4 +15,22 @@ public class Order implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    private User user;
+
+    public Long getId()
+    {
+        return id;
+    }
+
+    public User getUser()
+    {
+        return user;
+    }
+
+    public void setUser(User user)
+    {
+        this.user = user;
+    }
 }
