@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderService
@@ -23,11 +24,8 @@ public class OrderService
 
     public Order findById(Long id)
     {
-        List<Order> all = all();
-        for (Order o : all)
-            if(o.getId().equals(id))
-                return o;
-        return null;
+        Optional<Order> opt = orders.findById(id);
+        return opt.isPresent() ? opt.get() : null;
     }
 
     public User getUserByOrderId(Long id)
