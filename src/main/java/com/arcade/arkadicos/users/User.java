@@ -12,14 +12,16 @@ import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
-public class User implements Serializable, UserDetails
-{
+public class User implements Serializable, UserDetails {
     @Serial
     private static final Long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
+    private String email;
+    private String password;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
