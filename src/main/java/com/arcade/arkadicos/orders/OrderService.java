@@ -1,11 +1,9 @@
 package com.arcade.arkadicos.orders;
 
-import com.arcade.arkadicos.users.User;
+import com.arcade.arkadicos.products.Product;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class OrderService
@@ -24,13 +22,13 @@ public class OrderService
 
     public Order findById(Long id)
     {
-        Optional<Order> opt = orders.findById(id);
-        return opt.isPresent() ? opt.get() : null;
+        return orders.findById(id).orElse(null);
     }
 
-    public User getUserByOrderId(Long id)
+    public Product getProductByOrderId(Long id)
     {
-        return findById(id).getUser();
+        Order order = findById(id);
+        return order == null ? null : order.getProduct();
     }
 
     public void save(Order newOrder)

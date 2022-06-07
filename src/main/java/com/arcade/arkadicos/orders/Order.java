@@ -1,11 +1,15 @@
 package com.arcade.arkadicos.orders;
 
-import com.arcade.arkadicos.users.User;
+import com.arcade.arkadicos.products.Product;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 
+@Getter
+@Setter
 @Entity
 public class Order implements Serializable
 {
@@ -16,21 +20,8 @@ public class Order implements Serializable
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private User user;
+    @OneToOne
+    private Product product;
 
-    public Long getId()
-    {
-        return id;
-    }
-
-    public User getUser()
-    {
-        return user;
-    }
-
-    public void setUser(User user)
-    {
-        this.user = user;
-    }
+    private int units;
 }

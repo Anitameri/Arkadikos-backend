@@ -1,15 +1,14 @@
 package com.arcade.arkadicos.users;
 
+import com.arcade.arkadicos.orders.Order;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 public class User implements Serializable, UserDetails
@@ -21,10 +20,8 @@ public class User implements Serializable, UserDetails
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public Long getId()
-    {
-        return id;
-    }
+    @OneToMany
+    private Set<Order> orders;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
