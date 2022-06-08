@@ -1,16 +1,16 @@
 package com.arcade.arkadicos.products;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
-@CrossOrigin("http://127.0.0.1:8080")
+@RestController
+@CrossOrigin(origins ="http://127.0.0.1:8080")
 
 public class ProductController {
+
 @GetMapping("/api/products")
 
     public List<Product> getProducts(){
@@ -26,8 +26,13 @@ public class ProductController {
     );
     productsList.add(p);
     return productsList;
-
 }
+
+@PostMapping("/api/products/create")
+    public Product product(@RequestBody Product p){
+        return p;
+    }
+
 
 
 }
