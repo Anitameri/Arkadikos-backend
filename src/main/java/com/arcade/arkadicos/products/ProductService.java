@@ -33,6 +33,14 @@ public class ProductService{
         return productRepository.save(product);
     }
 
+    public Product update(Product product){
+        return productRepository.save(product);
+    }
+
+    public void delete(Product product){
+        productRepository.delete(product);
+    }
+
 
 
 }

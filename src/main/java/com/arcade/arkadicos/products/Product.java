@@ -1,14 +1,13 @@
 package com.arcade.arkadicos.products;
 
+import com.arcade.arkadicos.users.User;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 //Con lombok en vez de hacer los getter y setters ponemos esto
@@ -29,6 +28,17 @@ public class Product implements Serializable
     private String image;
     private int units;
     private int rating;
+
+    @OneToOne
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Product(){
 

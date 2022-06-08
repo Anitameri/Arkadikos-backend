@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -61,10 +62,13 @@ class ProductServiceTest {
                 "https://m.media-amazon.com/images/I/71Zy3qmKRLL._AC_SY500_.jpg"
         );
 
+        Mockito.when(productServiceUnderTest.create(product)).thenReturn(product);
+
         //When
 
-        productServiceUnderTest.create(product);
+        Product productActual = productServiceUnderTest.create(product);
         ArgumentCaptor<Product> productArgumentCaptor = ArgumentCaptor.forClass(Product.class);
+
         //Then
 
         verify(productRepositoryMock).save(productArgumentCaptor.capture());
@@ -72,6 +76,54 @@ class ProductServiceTest {
         Product capturedProduct = productArgumentCaptor.getValue();
 
         assertThat(capturedProduct).isEqualTo(product);
+        assertThat(productActual).isEqualTo(product);
+    }
+
+    @Test
+
+    void canUpdateProduct() {
+        //Given
+        Product product = new Product(
+                1L,
+                "Fifa 97",
+                "Videojuego MegaDrive Fifa 97",
+                10,
+                "videojuegos",
+                "https://m.media-amazon.com/images/I/71Zy3qmKRLL._AC_SY500_.jpg"
+        );
+        Mockito.when(productServiceUnderTest.update(product)).thenReturn(product);
+
+        //When
+        Product productUpdated = productServiceUnderTest.update(product);
+        ArgumentCaptor<Product> productArgumentCaptor = ArgumentCaptor.forClass(Product.class);
+
+        //Then
+        verify(productRepositoryMock).save(productArgumentCaptor.capture());
+        Product capturedProduct = productArgumentCaptor.getValue();
+
+        assertThat(capturedProduct).isEqualTo(product);
+        assertThat(productUpdated).isEqualTo(product);
+
+    }
+
+    @Test
+
+    void canDeleteProduct(){
+        //Give ****ojo a si queremos no mandar objeto entero***
+        Product product = new Product(
+                1L,
+                "Fifa 97",
+                "Videojuego MegaDrive Fifa 97",
+                10,
+                "videojuegos",
+                "https://m.media-amazon.com/images/I/71Zy3qmKRLL._AC_SY500_.jpg"
+        );
+
+        //When
+        productServiceUnderTest.delete(product);
+
+        //Then
+        verify(productRepositoryMock).delete(product);
     }
 
 
