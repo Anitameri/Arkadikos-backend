@@ -40,11 +40,11 @@ public class User implements Serializable, UserDetails {
     public User() {
     }
 
-    public User(User user) {
-        this.name = user.getName();
-        this.email = user.getEmail();
-        this.password = user.getPassword();
-        this.role = role;
+    public User(String name, String email, String password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = Role.ROLE_USER;
     }
 
 
