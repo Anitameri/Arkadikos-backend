@@ -8,31 +8,28 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins ="http://127.0.0.1:8080")
+public class ProductController
+{
+    private final ProductService service;
 
-public class ProductController {
-
-@GetMapping("/api/products")
-
-    public List<Product> getProducts(){
-    List<Product> productsList = new ArrayList<>();
-    Product p = new Product(
-            "Gameboy",
-            "ashashoco",
-            19,
-            "consola retro",
-            "https://upload.wikimedia.org/wikipedia/commons/f/f4/Game-Boy-FL.jpg"
-
-
-    );
-    productsList.add(p);
-    return productsList;
-}
-
-@PostMapping("/api/products/create")
-    public Product product(@RequestBody Product p){
-        return p;
+    public ProductController(ProductService service)
+    {
+        this.service = service;
+        this.service.create(new Product("GameBoy", "Nintendo old console", 19.9f, "console retro", "gameboy.png"));
+        this.service.create(new Product("PS2", "Sony old console", 24.9f, "console retro", "ps2.png"));
+        this.service.create(new Product("Xbox360", "Microsoft old console", 22.95f, "console retro", "xbox360.png"));
     }
 
+    @GetMapping("/api/products")
+    public List<Product> getProducts()
+    {
+        return service.getAllProducts();
+    }
 
-
+    @PostMapping("/api/product/create")
+    public List<Product> createProduct(@RequestBody Product product)
+    {
+        service.create(product);
+        return service.getAllProducts();
+    }
 }
