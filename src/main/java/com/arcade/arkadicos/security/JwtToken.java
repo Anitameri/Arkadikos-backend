@@ -1,6 +1,5 @@
 package com.arcade.arkadicos.security;
 
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,7 +11,6 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.function.Function;
 
 @Component
 public class JwtToken implements Serializable
