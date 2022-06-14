@@ -1,8 +1,10 @@
 package com.arcade.arkadicos.users;
 
 import com.arcade.arkadicos.orders.Order;
+
 import com.arcade.arkadicos.products.Product;
 import net.bytebuddy.agent.ByteBuddyAgent;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,8 +12,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
+
 import java.util.*;
 import java.util.stream.Collectors;
+
+import java.util.Collection;
+import java.util.Set;
+
 
 @Entity
 public class User implements Serializable, UserDetails {
@@ -92,6 +99,9 @@ public class User implements Serializable, UserDetails {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @OneToMany
+    private Set<Order> orders;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
