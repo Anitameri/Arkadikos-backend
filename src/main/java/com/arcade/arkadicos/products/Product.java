@@ -1,5 +1,6 @@
 package com.arcade.arkadicos.products;
 
+import com.arcade.arkadicos.orders.Order;
 import com.arcade.arkadicos.users.User;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,7 +30,8 @@ public class Product implements Serializable
     private int units;
     private int rating;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="user_id", nullable = false)
     private User user;
 
     public User getUser() {
@@ -39,6 +41,9 @@ public class Product implements Serializable
     public void setUser(User user) {
         this.user = user;
     }
+
+    @OneToMany (mappedBy = "product")
+    Set<Order>registrations;
 
     public Product(){
 

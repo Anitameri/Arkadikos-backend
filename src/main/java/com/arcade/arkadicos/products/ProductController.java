@@ -1,6 +1,8 @@
 package com.arcade.arkadicos.products;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -11,28 +13,36 @@ import java.util.List;
 
 public class ProductController {
 
+    @Autowired
+    ProductService service;
+
 @GetMapping("/api/products")
+    public List<Product> getall(){
+    return service.getAllProducts();
 
-    public List<Product> getProducts(){
-    List<Product> productsList = new ArrayList<>();
-    Product p = new Product(
-            "Gameboy",
-            "ashashoco",
-            19,
-            "consola retro",
-            "https://upload.wikimedia.org/wikipedia/commons/f/f4/Game-Boy-FL.jpg"
-
-
-    );
-    productsList.add(p);
-    return productsList;
 }
 
 @PostMapping("/api/products/create")
     public Product product(@RequestBody Product p){
-        return p;
+        return service.create(p);
     }
 
 
+@GetMapping("/api/products/delete/{id}")
+    public String delete(@PathVariable("id") Long id){
+
+        service.deleteById(id);
+
+        return "redirect:/api/products";
+    }
+
+@PutMapping("/api/products/update/")
+    public String update(@RequestBody Product p){
+
+//        service.getProductById(p.getId());
+        service.update(p);
+
+        return "redirect:/api/products";
+    }
 
 }

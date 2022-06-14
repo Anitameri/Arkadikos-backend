@@ -1,5 +1,6 @@
 package com.arcade.arkadicos.users;
 
+import com.arcade.arkadicos.orders.Order;
 import com.arcade.arkadicos.products.Product;
 import net.bytebuddy.agent.ByteBuddyAgent;
 import org.springframework.security.core.GrantedAuthority;
@@ -26,7 +27,8 @@ public class User implements Serializable, UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany
+
+    @OneToMany (mappedBy = "user")
     private Set<Product> products;
 
     public Set<Product> getProducts() {
@@ -36,6 +38,11 @@ public class User implements Serializable, UserDetails {
     public void setProducts(Set<Product> products) {
         this.products = products;
     }
+
+    @OneToMany(mappedBy = "user")
+    Set<Order>registrations;
+
+
 
     public User() {
     }

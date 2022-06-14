@@ -1,6 +1,8 @@
 package com.arcade.arkadicos.users;
 
 import com.arcade.arkadicos.products.Product;
+import com.arcade.arkadicos.products.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,24 +13,20 @@ import java.util.List;
 @CrossOrigin(origins ="http://127.0.0.1:8080")
 public class UserController {
 
+    @Autowired
+    UserService service;
+
 
     @GetMapping("/api/users")
 
-    public List<User> getUsers(){
-        List<User> usersList = new ArrayList<>();
-        User u = new User(
-                "jesus",
-                "jesusod@hotmail.com",
-                "1234"
+    public List<User> getall(){
+        return service.getAllUsers();
 
-        );
-        usersList.add(u);
-        return usersList;
     }
 
     @PostMapping("/api/users/create")
     public User user(@RequestBody User u){
-        return u;
+        return service.create(u);
     }
 
 }
