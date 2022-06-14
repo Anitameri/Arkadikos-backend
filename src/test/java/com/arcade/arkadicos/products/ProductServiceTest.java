@@ -106,25 +106,25 @@ class ProductServiceTest {
 
     }
 
-//    @Test
-//
-//    void canDeleteProduct(){
-//        //Give ****ojo a si queremos no mandar objeto entero***
-//        Product product = new Product(
-//                1L,
-//                "Fifa 97",
-//                "Videojuego MegaDrive Fifa 97",
-//                10,
-//                "videojuegos",
-//                "https://m.media-amazon.com/images/I/71Zy3qmKRLL._AC_SY500_.jpg"
-//        );
-//
-//        //When
-//        productServiceUnderTest.deleteById(id);
-//
-//        //Then
-//        verify(productRepositoryMock).delete(product);
-//    }
+    @Test
+
+    void canDeleteProduct(){
+        //Give ****ojo a si queremos no mandar objeto entero***
+        Product product = new Product(
+                1L,
+                "Fifa 97",
+                "Videojuego MegaDrive Fifa 97",
+                10,
+                "videojuegos",
+                "https://m.media-amazon.com/images/I/71Zy3qmKRLL._AC_SY500_.jpg"
+        );
+
+        //When
+        productServiceUnderTest.deleteById(product.getId());
+
+        //Then
+        verify(productRepositoryMock).deleteById(product.getId());
+    }
 
 
 }
