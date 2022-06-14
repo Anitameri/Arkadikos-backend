@@ -1,6 +1,7 @@
 package com.arcade.arkadicos.security;
 
 import com.arcade.arkadicos.users.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,15 +16,11 @@ import java.io.IOException;
 
 public class JwtValidator extends OncePerRequestFilter
 {
-    private final JwtToken token;
+    @Autowired
+    private JwtToken token;
 
-    private final UserService service;
-
-    public JwtValidator(JwtToken token, UserService service)
-    {
-        this.token = token;
-        this.service = service;
-    }
+    @Autowired
+    private UserService service;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException
@@ -45,5 +42,6 @@ public class JwtValidator extends OncePerRequestFilter
         {
             System.out.println("Cannot set user authentication!");
         }
+        filterChain.doFilter(request, response);
     }
 }
