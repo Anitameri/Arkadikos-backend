@@ -3,6 +3,7 @@ package com.arcade.arkadicos.users;
 import com.arcade.arkadicos.products.Product;
 import com.arcade.arkadicos.products.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +27,7 @@ public class UserController {
 
     @PostMapping("/api/users/create")
     public User user(@RequestBody User u){
-        return service.create(u);
+        u.setPassword(new BCryptPasswordEncoder().encode(u.getPassword()));return service.create(u);
     }
 
 }

@@ -6,6 +6,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.stream.Collectors;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://127.0.0.1:8080")
 public class AuthenticationController
 {
     private final AuthenticationManagerBuilder auth;
@@ -27,7 +28,7 @@ public class AuthenticationController
         this.auth = auth;
     }
 
-    @PostMapping("/signin")
+    @PostMapping("/api/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody Login user)
     {
         Authentication aut = auth.getObject().authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));

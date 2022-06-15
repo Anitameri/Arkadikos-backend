@@ -28,15 +28,17 @@ public class JwtValidator extends OncePerRequestFilter
         try
         {
             String jwt = null, header = request.getHeader("Authorization");
-            if(header != null && header.startsWith("Bearer "))
-                jwt = header.substring(7, header.length());
-            if(jwt != null && token.validateToken(jwt))
-            {
-                UserDetails user = service.loadUserByUsername(token.getUsernameFromToken(jwt));
-                UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
-                auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                SecurityContextHolder.getContext().setAuthentication(auth);
-            }
+            if(header != null)
+                if(header.startsWith("Bearer "))
+                    jwt = header.substring(7, header.length());
+            if(jwt != null)
+                if(token.validateToken(jwt))
+                {
+                    UserDetails user = service.loadUserByUsername(token.getUsernameFromToken(jwt));
+                    UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+                    auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    SecurityContextHolder.getContext().setAuthentication(auth);
+                }
         }
         catch (Exception e)
         {
