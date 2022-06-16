@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins ="http://127.0.0.1:8080")
-
+@CrossOrigin(origins ="http://localhost:4200")
 public class ProductController {
 
     @Autowired

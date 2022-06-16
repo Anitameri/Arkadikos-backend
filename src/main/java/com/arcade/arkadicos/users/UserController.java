@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins ="http://127.0.0.1:8080")
+@CrossOrigin(origins ="http://127.0.0.1:4200")
 public class UserController {
 
     @Autowired
@@ -27,7 +27,8 @@ public class UserController {
 
     @PostMapping("/api/users/create")
     public User user(@RequestBody User u){
-        u.setPassword(new BCryptPasswordEncoder().encode(u.getPassword()));return service.create(u);
+        u.setPassword(new BCryptPasswordEncoder().encode(u.getPassword()));
+        return service.create(u);
     }
 
 }
