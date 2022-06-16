@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.stream.Collectors;
 
 @RestController
-@CrossOrigin(origins = "http://127.0.0.1:8080")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AuthenticationController
 {
     private final AuthenticationManagerBuilder auth;
@@ -28,7 +28,7 @@ public class AuthenticationController
         this.auth = auth;
     }
 
-    @PostMapping("/api/signin")
+    @PostMapping("/api/users/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody Login user)
     {
         Authentication aut = auth.getObject().authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
