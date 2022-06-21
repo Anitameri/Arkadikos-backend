@@ -3,6 +3,7 @@ package com.arcade.arkadicos.users;
 import com.arcade.arkadicos.orders.Order;
 
 import com.arcade.arkadicos.products.Product;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import net.bytebuddy.agent.ByteBuddyAgent;
 
 import org.springframework.security.core.GrantedAuthority;
