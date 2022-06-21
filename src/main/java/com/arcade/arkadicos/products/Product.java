@@ -1,13 +1,19 @@
 package com.arcade.arkadicos.products;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.arcade.arkadicos.orders.Order;
+import com.arcade.arkadicos.users.User;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
+//Con lombok en vez de hacer los getter y setters ponemos esto
+@Getter
+@Setter
 public class Product implements Serializable
 {
     @Serial
@@ -16,4 +22,47 @@ public class Product implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
+    private String description;
+    private float price;
+    private String category;
+    private String image;
+    private int units;
+    private int rating;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="user_id", nullable = false)
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @OneToMany (mappedBy = "product")
+    Set<Order>registrations;
+
+    public Product(){
+
+    }
+
+    public Product(Long id, String name, String description, float price, String category, String image) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.category = category;
+        this.image = image;
+    }
+
+    public Product(String name, String description, float price, String category, String image) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.category = category;
+        this.image = image;
+    }
 }
