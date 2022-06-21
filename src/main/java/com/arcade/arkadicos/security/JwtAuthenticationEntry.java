@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class JwtAuthentication implements AuthenticationEntryPoint, Serializable
+public class JwtAuthenticationEntry implements AuthenticationEntryPoint, Serializable
 {
     @Serial
     private static final long serialVersionUID = 1L;
