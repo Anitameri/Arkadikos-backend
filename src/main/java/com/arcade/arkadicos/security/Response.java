@@ -9,7 +9,9 @@ import java.util.List;
 @Setter
 public class Response
 {
-    private String token, type = "Bearer ";
+    private Token token;
+
+    private String type = "Bearer ";
 
     private Long id;
 
@@ -17,7 +19,7 @@ public class Response
 
     private List<String> roles;
 
-    public Response(String token, Long id, String username, String email, List<String> roles)
+    public Response(Token token, Long id, String username, String email, List<String> roles)
     {
         this.token = token;
         this.id = id;

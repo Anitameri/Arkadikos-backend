@@ -1,6 +1,6 @@
 package com.arcade.arkadicos.products;
 
-import com.arcade.arkadicos.orders.Order;
+import com.arcade.arkadicos.orders.Orders;
 import com.arcade.arkadicos.users.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
@@ -33,7 +33,6 @@ public class Product implements Serializable
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id", nullable = false)
     private User user;
 
     public User getUser() {
@@ -43,10 +42,6 @@ public class Product implements Serializable
     public void setUser(User user) {
         this.user = user;
     }
-
-
-    @OneToMany (mappedBy = "product")
-    Set<Order>registrations;
 
     public Product(){
 
