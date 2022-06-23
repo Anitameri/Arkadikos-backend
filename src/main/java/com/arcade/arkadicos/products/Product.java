@@ -1,6 +1,6 @@
 package com.arcade.arkadicos.products;
 
-import com.arcade.arkadicos.orders.Order;
+import com.arcade.arkadicos.orders.Orders;
 import com.arcade.arkadicos.users.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
