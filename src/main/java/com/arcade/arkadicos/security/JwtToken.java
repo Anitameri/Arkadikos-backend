@@ -24,9 +24,12 @@ public class JwtToken implements Serializable
     @Value("${jwt.secret}")
     private String secret;
 
-    public String generateToken(Authentication auth)
+    public Token generateToken(Authentication auth)
     {
-        return Jwts.builder().setClaims(new HashMap<String, Object>()).setSubject(((UserDetails)auth.getPrincipal()).getUsername()).setIssuedAt(new Date(System.currentTimeMillis())).setExpiration(new Date(System.currentTimeMillis() + validation)).signWith(SignatureAlgorithm.HS512, secret).compact();
+        Token t = new Token();
+        t.setExpiration(new Date(System.currentTimeMillis() + validation));
+        t.setToken(Jwts.builder().setClaims(new HashMap<String, Object>()).setSubject(((UserDetails)auth.getPrincipal()).getUsername()).setIssuedAt(new Date(System.currentTimeMillis())).setExpiration(t.getExpiration()).signWith(SignatureAlgorithm.HS512, secret).compact());
+        return t;
     }
 
     public String getUsernameFromToken(String token)

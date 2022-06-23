@@ -1,18 +1,12 @@
 package com.arcade.arkadicos.orders;
 
 import com.arcade.arkadicos.products.Product;
-
-import com.arcade.arkadicos.users.User;
-
-
 import lombok.Getter;
 import lombok.Setter;
-
 
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 @Getter
 @Setter
@@ -20,23 +14,25 @@ import java.sql.Timestamp;
 public class Order implements Serializable
 {
     @Serial
-    private static final Long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
+    @OneToOne
+    private Product product;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    User user;
+    private float price;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    Product product;
+    private long units;
 
-    Timestamp created_at;
-    int units;
+    public Order(Product product, float price, long units)
+    {
+        this.product = product;
+        this.price = price;
+        this.units = units;
+    }
+
+    public Order(){}
 }
-//many 2 one hacia una tabla ( p) y otra m2o hacia user
-

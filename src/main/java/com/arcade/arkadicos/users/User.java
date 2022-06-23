@@ -1,10 +1,8 @@
 package com.arcade.arkadicos.users;
 
-import com.arcade.arkadicos.orders.Order;
+import com.arcade.arkadicos.orders.Orders;
 
 import com.arcade.arkadicos.products.Product;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import net.bytebuddy.agent.ByteBuddyAgent;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,7 +13,6 @@ import java.io.Serial;
 import java.io.Serializable;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import java.util.Collection;
 import java.util.Set;
@@ -46,11 +43,6 @@ public class User implements Serializable, UserDetails {
     public void setProducts(Set<Product> products) {
         this.products = products;
     }
-
-    @OneToMany(mappedBy = "user")
-    Set<Order>registrations;
-
-
 
     public User() {
     }
@@ -102,7 +94,7 @@ public class User implements Serializable, UserDetails {
     }
 
     @OneToMany
-    private Set<Order> orders;
+    private Set<Orders> orders;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
