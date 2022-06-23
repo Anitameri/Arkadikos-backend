@@ -31,8 +31,8 @@ public class Product implements Serializable
     private int units;
     private int rating;
 
+    @ManyToOne
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
     public User getUser() {
@@ -42,6 +42,7 @@ public class Product implements Serializable
     public void setUser(User user) {
         this.user = user;
     }
+
 
     public Product(){
 
