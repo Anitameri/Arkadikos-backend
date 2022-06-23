@@ -31,9 +31,8 @@ public class Product implements Serializable
     private int units;
     private int rating;
 
+    @ManyToOne
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id", nullable = false)
     private User user;
 
     public User getUser() {
@@ -44,9 +43,6 @@ public class Product implements Serializable
         this.user = user;
     }
 
-
-    @OneToMany (mappedBy = "product")
-    Set<Order>registrations;
 
     public Product(){
 
