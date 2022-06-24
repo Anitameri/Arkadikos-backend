@@ -3,36 +3,36 @@
 ![logotipo-header](https://github.com/Anitameri/Arkadikos-Frontend/blob/134854e879fe5959d25593560f51b71d7eed10dc/src/assets/images/logo2.png)
 
 
-Retro & MarketPlace Community
+Comunidad y MarketPlace Retro
 
 
-## Starting 🚀
+## Comienzo! 🚀
 
-- Clone or download Git Repository.
-- Paste or unzip https://github.com/Anitameri/Arkadikos-backend.git
-- Open the intelliJ idea.
-- Enjoy.
+- Colnar o descargar Git Repository.
+- Pegar o descomprimir https://github.com/Anitameri/Arkadikos-backend.git
+- Abrir intelliJ idea.
+- Disfrutar!
 
-See **Installation** to learn how to deploy the project.
+Ir a **Installation** para saber como desplegar el proyecto.
 
 
-### Requeriments 📋
+### Requerimientos 📋
 
 - intelliJ idea.
 - MySQL.
 - Browser.
 - Visual Studio Code
 
-### Installation 🔧
+### Instalacion 🔧
 
-- Open intelliJ idea.
-- Git clone https://github.com/Anitameri/Arkadikos-backend.git
-- Open-start your mysql GUI.
-- Enjoy.
+- Abrir intelliJ idea.
+- Clonar https://github.com/Anitameri/Arkadikos-backend.git
+- Abrir Xampp y PhpMyAdmin.
+- A Disfrutar!
 
-### Coding style tests ⌨️
+### Demos ⌨️
 
-Verifies the proper functioning of the web with the technologies applied to it
+
 
 <img width="517" alt="trello" src="https://user-images.githubusercontent.com/99189407/175484658-9cd9fc15-052b-4a0a-a629-6b386c7f7f6d.jpg">
 <img width="555" alt="figma (1)" src="https://user-images.githubusercontent.com/99189407/175484180-372ff0d0-79be-4f9d-bd19-ca270838b58e.jpg">
@@ -41,7 +41,7 @@ Verifies the proper functioning of the web with the technologies applied to it
 
 
 
-## Tools 🛠️
+## Herramientas 🛠️
 
 
 * [Trello](https://trello.com/b/LAXZpvTz/123-coders) - Project Organization.
@@ -53,11 +53,6 @@ Verifies the proper functioning of the web with the technologies applied to it
 * [XAMPP](https://www.apachefriends.org/es/index.html)
 * [Visual Studio Code](https://code.visualstudio.com/)
 
-
-## Versions 📌
-
-
-For all available versions, see the [tags in this repository](https://github.com/checkmyprojects/wheel-of-doom.git).
 
 ## Coders ✒️
 
@@ -71,12 +66,12 @@ For all available versions, see the [tags in this repository](https://github.com
 
 [Marti Puig](https://github.com/Choephel108)
 
-## License 📄
+## Licencia 📄
 
-This project is licensed under the (Arkadikos) License - see the file [LICENSE.md](LICENSE.md) for details.
+Este proyecto tiene licencia bajo (Arkadikos) - ver el archivo [LICENSE.md](LICENSE.md) para mas info.
 
-## Thanks 🎁
+## Agradecimientos 🎁
 
-* Tell others about this project 📢
-* Give thanks publicly 🤓.
+* Comparte este proyecto 📢
+* Muchas gracias a todos 🤓.
 * etc.
