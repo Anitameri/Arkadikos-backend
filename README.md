@@ -21,7 +21,6 @@ Ir a **Installation** para saber como desplegar el proyecto.
 - intelliJ idea.
 - MySQL.
 - Browser.
-- Visual Studio Code
 
 ### Instalacion 🔧
 
